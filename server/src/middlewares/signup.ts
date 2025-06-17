@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { UserSelect } from 'src/db/types';
+import { UserSelect } from '../db/types';
 import { z } from 'zod';
 
 const signupInputSchema = z.object({

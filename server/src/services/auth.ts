@@ -1,6 +1,6 @@
-import { getDb } from "src/db/db";
-import { users } from "src/db/schema";
-import { type UserInsert, type UserSelect } from "src/db/types";
+import { getDb } from "../db/db";
+import { users } from "../db/schema";
+import { type UserInsert, type UserSelect } from "../db/types";
 import bcrypt from "bcrypt";
 import {eq} from "drizzle-orm";
 import { generateTokenService } from "./token";
