@@ -1,0 +1,34 @@
+{
+  "name": "server",
+  "version": "0.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx tsx src/index.ts",
+    "dev": "nodemon -e ts  --exec \"pnpm start\"",
+    "typecheck": "tsc --noEmit",
+    "db:generate": "npx drizzle-kit generate",
+    "db:push": "npx drizzle-kit migrate"
+  },
+  "license": "MIT",
+  "packageManager": "pnpm@10.12.1",
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^24.0.3",
+    "@types/pg": "^8.15.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^16.5.0",
+    "drizzle-kit": "^0.31.1",
+    "drizzle-orm": "^0.44.2",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "nodemon": "^3.1.10",
+    "pg": "^8.16.0",
+    "zod": "^3.25.67"
+  }
+}
