@@ -8,6 +8,13 @@
       "when": 1750163399812,
       "tag": "0000_crazy_meltdown",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1750239800763,
+      "tag": "0001_nappy_emma_frost",
+      "breakpoints": true
     }
   ]
 }
