@@ -1,6 +1,6 @@
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { Pool } from 'pg';
-import { DB_URL } from 'src/config';
+import { DB_URL } from '../config';
 
 let dbInstance: ReturnType<typeof drizzle> | null = null;
 

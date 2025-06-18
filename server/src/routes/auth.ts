@@ -1,7 +1,7 @@
 import { Router, Request, Response } from "express";
-import { validateSigninInputMiddleware } from "src/middlewares/signin";
-import { validateSignupInputMiddleware } from "src/middlewares/signup";
-import { signinService, signupService } from "src/services/auth";
+import { validateSigninInputMiddleware } from "../middlewares/signin";
+import { validateSignupInputMiddleware } from "../middlewares/signup";
+import { signinService, signupService } from "../services/auth";
 
 const authRouter = Router();
 
