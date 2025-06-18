@@ -10,7 +10,7 @@ export const users = pgTable('users', {
 
 export const tags = pgTable('tags', {
   id: uuid('id').primaryKey().default(sql`uuid_generate_v4()`),
-  name: text('name').notNull(),
+  name: text('name').notNull().unique(),
 });
 
 export const content = pgTable('content', {
