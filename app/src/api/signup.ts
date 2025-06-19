@@ -9,7 +9,6 @@ export interface SignupRequest {
 export interface SignupResponse {
   message?: string;
   error?: string;
-  status?: number;
 }
 
 export async function signupApi(

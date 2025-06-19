@@ -3,7 +3,6 @@ import { useMutation } from "@tanstack/react-query";
 import { signinApi, type SigninCredentials, type SigninResponse } from "@/api/singin";
 import { toast } from "sonner";
 import { signupApi, type SignupRequest, type SignupResponse } from "@/api/signup";
-import { setTimeout } from "timers";
 
 export function useSigninMutation() {
   const navigate = useNavigate();
@@ -30,13 +29,11 @@ export function useSignupMutation() {
   return useMutation<SignupResponse, Error, SignupRequest, unknown>({
     mutationFn: (requestBody: SignupRequest) => signupApi(requestBody),
     onSuccess(response) {
-      if (response.status === 201) {
-        toast.success(response.message || "Signup successful");
-        setTimeout(() => {
-          navigate({ to: "/signin" });
-        }, 1000);
-      } else if (response.error) {
-        toast.error(response.error);
+      if (response) {
+        toast.success("Signup successful, please signin.");
+        navigate({ to: "/signin" });
+      } else {
+        toast.error("Something went wrong, please try again.");
       }
     },
     onError() {
