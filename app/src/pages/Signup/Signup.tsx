@@ -13,15 +13,24 @@ import { Label } from "@/components/ui/label";
 import { Eye, EyeOff, BrainCircuit } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { Link } from "@tanstack/react-router";
+import { useSignupMutation } from "@/lib/mutations";
 
 export default function SignupPage() {
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const { mutate, status } = useSignupMutation();
+  
+  const isLoading = status === "pending";
 
-  const handleSignUp = (e: FormEvent) => {
+  const handleSignUp = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsLoading(true);
-    setTimeout(() => setIsLoading(false), 1500);
+    const formData = new FormData(e.currentTarget);
+    const requestBody = {
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      password: formData.get("password") as string,
+    };
+    
+    mutate(requestBody);
   };
 
   return (
@@ -48,6 +57,7 @@ export default function SignupPage() {
               <Input
                 id="name"
                 type="text"
+                name="name"
                 placeholder="John Doe"
                 required
                 className="focus-visible:ring-primary"
@@ -61,6 +71,7 @@ export default function SignupPage() {
               <Input
                 id="email"
                 type="email"
+                name="email"
                 placeholder="name@example.com"
                 required
                 className="focus-visible:ring-primary"
@@ -75,6 +86,7 @@ export default function SignupPage() {
                 <Input
                   id="password"
                   type={showPassword ? "text" : "password"}
+                  name="password"
                   placeholder="••••••••"
                   required
                   className="pr-10 focus-visible:ring-primary"
