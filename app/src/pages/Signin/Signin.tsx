@@ -13,36 +13,23 @@ import { Label } from "@/components/ui/label";
 import { Eye, EyeOff, BrainCircuit } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { Link } from "@tanstack/react-router";
-import { signinApi } from "@/api/singin";
-import { toast } from "sonner";
+import { useSigninMutation } from "@/lib/mutations";
 
 export default function SigninPage() {
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const { mutate, status } = useSigninMutation();
+  
+  const isLoading = status === "pending";
 
   const handleSignIn = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsLoading(true);
     const formData = new FormData(e.currentTarget);
     const credentials = {
       email: formData.get("email") as string,
       password: formData.get("password") as string,
     };
 
-    console.log(credentials);
-
-    signinApi(credentials)
-      .then((response) => {
-        if (response.token) {
-          localStorage.setItem("session", "Bearer " + response.token);
-          window.location.href = "/";
-        } else if (response.error) {
-          toast.error(response.error);
-        }
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    mutate(credentials);
   };
 
   return (
