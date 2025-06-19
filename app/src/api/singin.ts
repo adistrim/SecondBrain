@@ -33,7 +33,7 @@ export async function signinApi(
             error: error.response.data?.message || "Invalid Credentails",
           };
         case 404:
-          return { error: error.response.data?.message || "User Not Found" };
+          return { error: "No account found with this email" };
       }
     }
 
