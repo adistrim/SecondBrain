@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import Home from "@/pages/Home/Home";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_authenticated/")({
@@ -6,9 +6,5 @@ export const Route = createFileRoute("/_authenticated/")({
 });
 
 function Index() {
-  return (
-    <div className="flex min-h-svh flex-col items-center justify-center">
-      <Button variant="secondary">Welcome!</Button>
-    </div>
-  );
+  return <Home />;
 }
